@@ -1,17 +1,6 @@
-FROM node:10.23-alpine
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN yarn install
-
+FROM node:lts-stretch 
+WORKDIR /app
+COPY ["package.json", "yarn.lock", "./"]
+RUN yarn
 COPY . .
-
-EXPOSE 8000
-
-CMD ["node", "app.js"]
-
-WORKDIR /usr
-
 RUN yarn build
