@@ -6,8 +6,10 @@ COPY package*.json ./
 
 RUN yarn install
 
+RUN yarn build
+
 COPY . .
 
 EXPOSE 8000
 
-CMD ["yarn", "run", "build"]
+CMD ["node", "app.js"]
